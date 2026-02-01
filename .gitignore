@@ -15,3 +15,9 @@ tmp/
 # Environment
 .env
 .env.*
+
+# Codev
+.agent-farm/
+.consult/
+codev/.update-hashes.json
+.builders/
