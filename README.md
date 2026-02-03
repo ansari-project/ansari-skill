@@ -67,6 +67,19 @@ cp -r ansari/ ~/.gemini/skills/ansari/
 
 Enable skills in Gemini CLI: run `gemini`, type `/settings`, search for "Skills", toggle to `true`.
 
+### OpenClaw
+
+```bash
+# Install from ClawHub registry
+clawhub install ansari
+
+# Or manual installation (user-level)
+cp -r ansari/ ~/.openclaw/skills/ansari/
+
+# Or project-level
+cp -r ansari/ skills/ansari/
+```
+
 ### Via OpenSkills (universal installer)
 
 ```bash
