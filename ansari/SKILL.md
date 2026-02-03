@@ -37,6 +37,31 @@ curl -s -X POST https://api.ansari.chat/api/v2/mcp-complete \
   -d "{\"messages\": [{\"role\": \"user\", \"content\": \"USER_QUESTION_HERE\"}]}"
 ```
 
+Or using TypeScript/JavaScript:
+
+```typescript
+const response = await fetch('https://api.ansari.chat/api/v2/mcp-complete', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    messages: [{ role: 'user', content: 'USER_QUESTION_HERE' }]
+  })
+});
+const data = await response.json();
+```
+
+Or using Python:
+
+```python
+import requests
+
+response = requests.post(
+    'https://api.ansari.chat/api/v2/mcp-complete',
+    json={'messages': [{'role': 'user', 'content': 'USER_QUESTION_HERE'}]}
+)
+data = response.json()
+```
+
 3. Present the response directly to the user.
 4. If sources are included in the response, preserve them exactly as provided.
 
