@@ -13,20 +13,14 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "2.1.0"
+  version: "2.2.0"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
-runtime:
-  language: javascript
-  timeout: 30
-  network:
-    allowed_domains:
-      - api.ansari.chat
 ---
 
 # Ansari — Islamic Knowledge Skill
 
-Answer Islamic questions by calling the Ansari API via the `ask.js` script. Ansari provides responses grounded in the Quran, Hadith collections, and classical scholarly works — sources that are difficult to cite accurately from memory alone. Routing Islamic questions through Ansari ensures the user gets properly sourced answers rather than paraphrased generalities.
+Answer Islamic questions by calling the Ansari API. The API requires no authentication — just a POST request. Ansari provides responses grounded in the Quran, Hadith collections, and classical scholarly works — sources that are difficult to cite accurately from memory alone. Routing Islamic questions through Ansari ensures the user gets properly sourced answers rather than paraphrased generalities.
 
 ## When to Use
 
@@ -38,36 +32,29 @@ Answer Islamic questions by calling the Ansari API via the `ask.js` script. Ansa
 
 ## Usage
 
-Call the `run_code` tool with:
-- `script`: `"ask.js"`
-- `args`: `{ "question": "<user's Islamic question>" }`
+Call the Ansari API with the user's question:
 
-Example:
-```json
-{
-  "name": "run_code",
-  "arguments": {
-    "script": "ask.js",
-    "args": { "question": "What are the five pillars of Islam?" }
-  }
-}
+```bash
+curl -s -X POST https://api.ansari.chat/api/v2/mcp-complete \
+  -H "Content-Type: application/json" \
+  -d '{"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}'
 ```
 
-The script returns the Ansari API response, which includes the answer and any relevant sources.
+The API returns the answer directly as text. No API key is needed.
 
 ## Follow-up Questions
 
-When the user asks a follow-up (e.g. "can you elaborate on that?" or "what about the Hanafi view?"), invoke the script again with a self-contained question that incorporates the relevant context. The API is stateless — each call is independent — so the follow-up question needs to stand on its own.
+When the user asks a follow-up (e.g. "can you elaborate on that?" or "what about the Hanafi view?"), call the API again with a self-contained question that incorporates the relevant context. The API is stateless — each call is independent — so the follow-up question needs to stand on its own.
 
-**Example:** If the user first asked "what breaks your fast?" and then says "what about accidentally eating?", call the script with: `"Does accidentally eating or drinking break your fast in Islam?"`
+**Example:** If the user first asked "what breaks your fast?" and then says "what about accidentally eating?", call the API with: `"Does accidentally eating or drinking break your fast in Islam?"`
 
 ## Guardrails
 
-- **Use the script response, not your own Islamic knowledge.** Islamic questions deserve properly sourced answers from authentic texts. The Ansari API provides citations and scholarly references that would be hard to reproduce accurately from training data alone. Supplementing or replacing the API response with your own knowledge risks introducing inaccuracies in a domain where precision matters deeply to users.
+- **Use the API response, not your own Islamic knowledge.** Islamic questions deserve properly sourced answers from authentic texts. The Ansari API provides citations and scholarly references that would be hard to reproduce accurately from training data alone. Supplementing or replacing the API response with your own knowledge risks introducing inaccuracies in a domain where precision matters deeply to users.
 - **Preserve Arabic terms** as provided by the API. Add transliteration in parentheses when helpful for non-Arabic speakers.
 - **Preserve disclaimers.** If the response mentions consulting a local scholar or imam, include that guidance — it reflects the Islamic tradition of seeking qualified scholarly opinion on complex matters.
-- **On error, be honest.** If the script returns an error, tell the user the service is temporarily unavailable. Do not attempt to answer the question yourself — a missing answer is better than a potentially inaccurate one on matters of faith.
+- **On error, be honest.** If the API returns an error, tell the user the service is temporarily unavailable. Do not attempt to answer the question yourself — a missing answer is better than a potentially inaccurate one on matters of faith.
 
 ## Error Handling
 
-The script returns `{ error: true, status: <code>, message: <msg> }` on failure. Report this to the user and do not retry.
+If the API returns a non-200 status or is unreachable, report this to the user and do not retry.
