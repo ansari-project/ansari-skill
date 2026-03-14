@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "2.2.0"
+  version: "2.3.0"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 ---
@@ -32,15 +32,16 @@ Answer Islamic questions by calling the Ansari API. The API requires no authenti
 
 ## Usage
 
-Call the Ansari API with the user's question:
+Make a POST request to the Ansari API with the user's question. Use whatever HTTP tool is available to you (curl, fetch, WebFetch, requests, etc.). No API key is needed.
 
-```bash
-curl -s -X POST https://api.ansari.chat/api/v2/mcp-complete \
-  -H "Content-Type: application/json" \
-  -d '{"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}'
+```
+POST https://api.ansari.chat/api/v2/mcp-complete
+Content-Type: application/json
+
+{"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}
 ```
 
-The API returns the answer directly as text. No API key is needed.
+The API returns the answer directly as text.
 
 ## Follow-up Questions
 
