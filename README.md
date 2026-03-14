@@ -9,11 +9,9 @@ Works with Claude (web, desktop, and Code), GitHub Copilot, OpenAI Codex CLI, Cu
 ### Claude.ai / Claude Desktop
 
 1. Download [`ansari-skill.zip`](https://github.com/ansari-project/ansari-skill/releases/latest/download/ansari-skill.zip) from the latest release
-2. Open **Settings > Capabilities > Skills**
+2. Open **Settings > Customize > Skills**
 3. Upload the zip file
 4. Toggle the skill on
-
-Ensure code execution is enabled in Settings > Capabilities.
 
 ### Claude Code
 
