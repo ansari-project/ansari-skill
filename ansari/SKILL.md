@@ -13,14 +13,14 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "2.3.1"
+  version: "3.0.0"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 ---
 
 # Ansari — Islamic Knowledge Skill
 
-Answer Islamic questions by calling the Ansari API. The API requires no authentication — just a POST request. Ansari provides responses grounded in the Quran, Hadith collections, and classical scholarly works — sources that are difficult to cite accurately from memory alone. Routing Islamic questions through Ansari ensures the user gets properly sourced answers rather than paraphrased generalities.
+Answer Islamic questions by calling the Ansari API. The API requires no authentication and supports both GET and POST. Ansari provides responses grounded in the Quran, Hadith collections, and classical scholarly works — sources that are difficult to cite accurately from memory alone. Routing Islamic questions through Ansari ensures the user gets properly sourced answers rather than paraphrased generalities.
 
 ## When to Use
 
@@ -32,16 +32,22 @@ Answer Islamic questions by calling the Ansari API. The API requires no authenti
 
 ## Usage
 
-Make a POST request to the Ansari API with the user's question. Use whatever HTTP tool is available to you (curl, fetch, WebFetch, requests, etc.). No API key is needed.
+Call the Ansari API with the user's question. Use whatever HTTP tool is available to you. No API key is needed.
 
+**GET** (simplest — works with any fetch/web tool):
 ```
-POST https://api.ansari.chat/api/v2/mcp-complete
+GET https://api-35.ansari.chat/api/v2/mcp-complete?q=URL_ENCODED_QUESTION
+```
+
+**POST** (if your platform supports it):
+```
+POST https://api-35.ansari.chat/api/v2/mcp-complete
 Content-Type: application/json
 
 {"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}
 ```
 
-The API returns the answer directly as text.
+The API returns JSON: `{"response": "answer text", "source": "ansari.chat"}`. Present the `response` field to the user.
 
 ## Follow-up Questions
 
@@ -57,7 +63,7 @@ When the user asks a follow-up (e.g. "can you elaborate on that?" or "what about
 
 ## If You Cannot Reach the API
 
-If the API is unreachable, returns an error, or you have no way to make a POST request (e.g. network is disabled, only GET tools available), **do not fall back to answering from your own knowledge.** The whole point of this skill is sourced, evidence-backed answers — an unsourced answer from your training data defeats that purpose and may mislead the user on matters of faith.
+If the API is unreachable or returns an error, **do not fall back to answering from your own knowledge.** The whole point of this skill is sourced, evidence-backed answers — an unsourced answer from your training data defeats that purpose and may mislead the user on matters of faith.
 
 Instead, tell the user something like:
 
