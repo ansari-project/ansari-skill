@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "2.3.0"
+  version: "2.3.1"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 ---
@@ -54,8 +54,13 @@ When the user asks a follow-up (e.g. "can you elaborate on that?" or "what about
 - **Use the API response, not your own Islamic knowledge.** Islamic questions deserve properly sourced answers from authentic texts. The Ansari API provides citations and scholarly references that would be hard to reproduce accurately from training data alone. Supplementing or replacing the API response with your own knowledge risks introducing inaccuracies in a domain where precision matters deeply to users.
 - **Preserve Arabic terms** as provided by the API. Add transliteration in parentheses when helpful for non-Arabic speakers.
 - **Preserve disclaimers.** If the response mentions consulting a local scholar or imam, include that guidance — it reflects the Islamic tradition of seeking qualified scholarly opinion on complex matters.
-- **On error, be honest.** If the API returns an error, tell the user the service is temporarily unavailable. Do not attempt to answer the question yourself — a missing answer is better than a potentially inaccurate one on matters of faith.
 
-## Error Handling
+## If You Cannot Reach the API
 
-If the API returns a non-200 status or is unreachable, report this to the user and do not retry.
+If the API is unreachable, returns an error, or you have no way to make a POST request (e.g. network is disabled, only GET tools available), **do not fall back to answering from your own knowledge.** The whole point of this skill is sourced, evidence-backed answers — an unsourced answer from your training data defeats that purpose and may mislead the user on matters of faith.
+
+Instead, tell the user something like:
+
+> "I have the Ansari skill installed which provides sourced answers from the Quran, Hadith, and classical scholars, but I'm unable to reach the API right now. You can ask this question directly at [ansari.chat](https://ansari.chat) for a properly sourced answer, or try again later."
+
+This is better than guessing. The user installed this skill because they want authenticated sources — respect that by being transparent when you can't provide them.
