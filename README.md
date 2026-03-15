@@ -89,6 +89,12 @@ npx openskills sync
 
 Copy the `ansari/` directory into your platform's skills directory. The skill follows the open [Agent Skills specification](https://agentskills.io/specification).
 
+## Upgrading
+
+**Claude.ai / Claude Desktop:** Remove the old skill in **Settings > Customize > Skills**, then upload the new `ansari-skill.zip`.
+
+**All other platforms:** Download the latest [`ansari-skill.zip`](https://github.com/ansari-project/ansari-skill/releases/latest/download/ansari-skill.zip), extract it, and replace your existing `ansari/` directory.
+
 ## What It Does
 
 When you ask an Islamic question, the skill instructs the AI agent to call the Ansari API — a service that provides answers grounded in the Quran, authentic Hadith collections, and classical Islamic scholarship.
