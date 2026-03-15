@@ -13,9 +13,13 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "3.0.1"
+  version: "3.1.0"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
+runtime:
+  network:
+    allowed_domains:
+      - api-35.ansari.chat
 ---
 
 # Ansari — Islamic Knowledge Skill
