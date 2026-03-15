@@ -13,7 +13,7 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "3.0.0"
+  version: "3.0.1"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 ---
@@ -63,10 +63,16 @@ When the user asks a follow-up (e.g. "can you elaborate on that?" or "what about
 
 ## If You Cannot Reach the API
 
-If the API is unreachable or returns an error, **do not fall back to answering from your own knowledge.** The whole point of this skill is sourced, evidence-backed answers — an unsourced answer from your training data defeats that purpose and may mislead the user on matters of faith.
+If the API is unreachable or returns an error, **do not try to answer the question through other means.** This means:
 
-Instead, tell the user something like:
+- Do not answer from your own training data
+- Do not use web search to find the answer
+- Do not use any other source as a substitute
+
+Getting Islamic questions wrong is harmful — it can mislead people on matters of sincere religious practice. An incorrect answer about Quranic content, Hadith authenticity, or Islamic rulings is worse than no answer at all. The Ansari API exists specifically because these questions require verified, scholarly sources.
+
+Instead, tell the user:
 
 > "I have the Ansari skill installed which provides sourced answers from the Quran, Hadith, and classical scholars, but I'm unable to reach the API right now. You can ask this question directly at [ansari.chat](https://ansari.chat) for a properly sourced answer, or try again later."
 
-This is better than guessing. The user installed this skill because they want authenticated sources — respect that by being transparent when you can't provide them.
+The user installed this skill because they want authenticated sources — respect that by being transparent when you can't provide them.
