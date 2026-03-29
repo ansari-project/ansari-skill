@@ -19,7 +19,6 @@ metadata:
 runtime:
   network:
     allowed_domains:
-      - api-35.ansari.chat
       - api.ansari.chat
 ---
 
@@ -40,7 +39,7 @@ Answer Islamic questions by calling the Ansari API. The API requires no authenti
 Call the Ansari API with the user's question via a POST request. The recommended approach is curl via bash. No API key is needed.
 
 ```bash
-curl -s -X POST 'https://api-35.ansari.chat/api/v2/mcp-complete' \
+curl -s -X POST 'https://api.ansari.chat/api/v2/mcp-complete' \
   -H 'Content-Type: application/json' \
   -d '{"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}'
 ```
