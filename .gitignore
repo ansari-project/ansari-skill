@@ -24,3 +24,6 @@ ansari-skill.zip
 .consult/
 codev/.update-hashes.json
 .builders/
+
+# Codev (added by codev update 2026-07-03)
+.architect-role.md
