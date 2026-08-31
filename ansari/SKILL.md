@@ -13,14 +13,13 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "3.4.0"
+  version: "3.4.1"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 runtime:
   network:
     allowed_domains:
       - api.askansari.ai
-      - api-35.ansari.chat
 ---
 
 # Ansari — Islamic Knowledge Skill
@@ -47,9 +46,6 @@ curl -s -X POST 'https://api.askansari.ai/api/v2/mcp-complete' \
 ```
 
 The API returns the answer directly as text. Present it to the user.
-
-If `api.askansari.ai` is unreachable, retry the same request against
-`https://api-35.ansari.chat/api/v2/mcp-complete` — it serves the same API.
 
 ## Follow-up Questions
 
