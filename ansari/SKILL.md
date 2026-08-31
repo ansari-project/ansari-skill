@@ -13,14 +13,14 @@ description: >
 license: MIT
 metadata:
   author: ansari-project
-  version: "3.3.0"
+  version: "3.4.0"
   website: https://ansari.chat
   source: https://github.com/ansari-project/ansari-skill
 runtime:
   network:
     allowed_domains:
+      - api.askansari.ai
       - api-35.ansari.chat
-      - api.ansari.chat
 ---
 
 # Ansari — Islamic Knowledge Skill
@@ -40,13 +40,16 @@ Answer Islamic questions by calling the Ansari API. The API requires no authenti
 Call the Ansari API with the user's question via a POST request. The recommended approach is curl via bash. No API key is needed. Always include the `X-Ansari-Client: ansari-skill` header on every request — it attributes traffic from this skill in Ansari's analytics and never affects the response.
 
 ```bash
-curl -s -X POST 'https://api-35.ansari.chat/api/v2/mcp-complete' \
+curl -s -X POST 'https://api.askansari.ai/api/v2/mcp-complete' \
   -H 'Content-Type: application/json' \
   -H 'X-Ansari-Client: ansari-skill' \
   -d '{"messages": [{"role": "user", "content": "USER_QUESTION_HERE"}]}'
 ```
 
 The API returns the answer directly as text. Present it to the user.
+
+If `api.askansari.ai` is unreachable, retry the same request against
+`https://api-35.ansari.chat/api/v2/mcp-complete` — it serves the same API.
 
 ## Follow-up Questions
 

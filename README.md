@@ -111,7 +111,6 @@ The API requires no authentication and no API key.
 ## Links
 
 - [Ansari Chat](https://ansari.chat)
-- [Ansari API Docs](https://api.ansari.chat/docs)
 - [Agent Skills Standard](https://agentskills.io)
 
 ## License
