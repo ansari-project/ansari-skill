@@ -1,3 +1,11 @@
+> [!WARNING]
+> **Deprecated (2026-11-25).** This repository is no longer maintained. The Ansari skill now lives at
+> [iaser-ai/ansari: `skills/ansari`](https://github.com/iaser-ai/ansari/tree/develop/skills/ansari)
+> (install steps: [`skills/README.md`](https://github.com/iaser-ai/ansari/blob/develop/skills/README.md)).
+>
+> Copies already installed from this repository keep calling the old Ansari API route with no key. They will stop
+> working when that route starts requiring a key. Reinstall the skill from the new location.
+
 # Ansari — Islamic Knowledge Agent Skill
 
 An [Agent Skill](https://agentskills.io) that answers questions about Islamic theology, history, ethics, and practice using authentic sources (Quran, Hadith, classical scholars).

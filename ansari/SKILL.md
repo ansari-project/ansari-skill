@@ -22,6 +22,11 @@ runtime:
       - api.askansari.ai
 ---
 
+> **Deprecated (2026-11-25).** This copy of the Ansari skill is no longer maintained. The skill now lives at
+> https://github.com/iaser-ai/ansari/tree/develop/skills/ansari. Copies installed from
+> ansari-project/ansari-skill keep calling the old Ansari API route with no key, and will stop working when that
+> route starts requiring a key. Reinstall the skill from the new location.
+
 # Ansari — Islamic Knowledge Skill
 
 Answer Islamic questions by calling the Ansari API. The API requires no authentication and supports both GET and POST. Ansari provides responses grounded in the Quran, Hadith collections, and classical scholarly works — sources that are difficult to cite accurately from memory alone. Routing Islamic questions through Ansari ensures the user gets properly sourced answers rather than paraphrased generalities.
